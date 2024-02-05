@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         String jsonarr = gson.toJson(my_shared_preferences_lst);
         editor.putString("student_data", jsonarr);
         editor.apply();
-        mainBinding.showLstHeading.setText("List Data ");
         loadData();
     }
 
@@ -70,9 +69,13 @@ public class MainActivity extends AppCompatActivity {
         } else {
             String mycompletesStrinsss ="";
             for (int i = 0; i < my_shared_preferences_lst.size(); i++) {
-                mycompletesStrinsss+=("\n\n" + my_shared_preferences_lst.get(i).getUsername() + "  ----->  " + my_shared_preferences_lst.get(i).getUserAge() + " . ");
+                mycompletesStrinsss+=("" + my_shared_preferences_lst.get(i).getUsername() + "  ----->  " + my_shared_preferences_lst.get(i).getUserAge() + " . \n");
             }
             mainBinding.showPreferencesGenratedLst.setText(mycompletesStrinsss);
+            if(my_shared_preferences_lst.size()>0){
+                mainBinding.showLstHeading.setVisibility(View.VISIBLE);
+
+            }
         }
     }
 }
